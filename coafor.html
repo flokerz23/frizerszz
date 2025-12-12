@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coafor - Salon Exclusive</title>
+    <title>Coafor - A&M Concept</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +21,8 @@
         <nav class="navbar">
             <div class="container">
                 <div class="nav-wrapper">
-                    <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Salon
-                            Exclusive</a></div>
+                    <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">A&M
+                            Concept</a></div>
                     <ul class="nav-menu" id="navMenu">
                         <li class="nav-close">
                             <button class="close-menu" id="closeMenu" aria-label="Close menu">
@@ -32,7 +32,15 @@
                         </li>
                         <li><a href="index.html#home">Acasă</a></li>
                         <li><a href="index.html#despre">Despre Noi</a></li>
-                        <li><a href="index.html#servicii">Servicii</a></li>
+                        <li class="dropdown">
+                            <a href="index.html#servicii" class="dropbtn">Servicii <i
+                                    class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-content">
+                                <li><a href="frizerie.html">Frizerie</a></li>
+                                <li><a href="coafor.html">Coafor</a></li>
+                                <li><a href="coafor.html">Vopsire</a></li>
+                            </ul>
+                        </li>
                         <li><a href="index.html#galerie">Galerie</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
@@ -48,8 +56,7 @@
     <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Service Hero -->
-    <section class="service-hero"
-        style="background-image: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1920&q=80');">
+    <section class="service-hero align-left" style="background-image: url('images/vopsit.png');">
         <div class="container">
             <div class="service-hero-content">
                 <div class="service-icon-large"><i class="fas fa-cut"></i></div>
@@ -108,7 +115,7 @@
                         </div>
                         <div class="feature-item">
                             <div class="feature-image">
-                                <img src="images/coafor-vopsit.jpg" alt="Vopsit">
+                                <img src="images/vopsit.png" alt="Vopsit">
                             </div>
                             <div class="feature-content">
                                 <h3>Vopsit</h3>
@@ -213,7 +220,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Salon Exclusive</h4>
+                    <h4>A&M Concept</h4>
                     <p>Oferim servicii complete de tuns, coafat, vopsit și servicii de înfrumusețare — toate pentru o
                         imagine impecabilă.</p>
                 </div>
@@ -234,7 +241,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Copyright © 2025 Salon Exclusive | Designed with passion</p>
+                <p>Copyright © 2025 A&M Concept | Designed with passion</p>
             </div>
         </div>
     </footer>
