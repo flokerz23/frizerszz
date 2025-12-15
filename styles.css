@@ -6,20 +6,21 @@
 
 :root {
     --primary-color: #C5A059;
-    /* New Muted Gold from screenshot */
-    /* Metallic Gold */
+    /* New Muted Gold */
     --primary-dark: #B08D45;
     --secondary-color: #111111;
     /* Softer Black */
     --text-color: #333333;
     --text-light: #777777;
     --bg-light: #F9F9F9;
-    /* Cream/Off-white */
+    --bg-ivory: #F9F7F2;
+    /* Luxury Ivory */
     --white: #ffffff;
     --glass: rgba(255, 255, 255, 0.95);
     --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Slower, smoother */
 }
 
 html {
@@ -51,9 +52,10 @@ body {
     background: #1a1a1a;
     /* Dark Grey */
     backdrop-filter: blur(10px);
-    border-bottom: none;
-    /* Subtle border instead of shadow */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Thin divider line */
     transition: var(--transition);
+    padding-bottom: 5px;
 }
 
 /* Top Bar */
@@ -103,8 +105,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 0;
-    /* Reduced padding */
+    padding: 1.2rem 0;
+    /* Increased height */
 }
 
 .logo {
@@ -129,11 +131,13 @@ body {
 
 .nav-menu a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.9);
-    /* White text */
+    color: rgba(255, 250, 240, 0.9);
+    /* Warm off-white */
     font-weight: 500;
     transition: var(--transition);
     position: relative;
+    letter-spacing: 1px;
+    /* Spaced */
 }
 
 .nav-menu a::after {
@@ -149,6 +153,12 @@ body {
 
 .nav-menu a:hover::after {
     width: 100%;
+    opacity: 0.8;
+}
+
+.nav-menu a:hover {
+    color: rgba(255, 250, 240, 1);
+    /* Slight brighten, no color change */
 }
 
 /* New Service Section Design */
@@ -2085,17 +2095,104 @@ section {
     color: var(--white);
 }
 
-/* Article Hero Glassmorphism */
+/* Article Hero Split Layout */
 .article-hero-glass {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 2.5rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    max-width: 700px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0 5% 0 10%;
+    /* Aesthetic padding */
+    border: none;
+    box-shadow: none;
+    width: 60%;
+    /* Increased width */
+    max-width: 60%;
+    min-width: 300px;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 1.5rem;
+    max-width: 500px;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.eyebrow-text {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    /* Much bigger */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    color: var(--white);
+}
+
+.service-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.service-details {
+    padding: 100px 0;
+    background: var(--bg-ivory);
+    /* Ivory background */
+}
+
+.service-content-wrapper {
+    max-width: 65ch;
+    /* Constrain width */
+    margin: 0 auto;
+}
+
+.service-description p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    /* Increased line height */
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.section-separator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    color: var(--primary-color);
+    opacity: 0.6;
+    font-size: 1.2rem;
+}
+
+.section-separator::before,
+.section-separator::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: currentColor;
+    margin: 0 15px;
 }
 
 .service-hero.align-bottom-left {
