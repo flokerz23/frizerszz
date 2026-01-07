@@ -1,47 +1,119 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Gallery.css';
 
 const galleryImages = [
-    "https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1521590832169-7dad1a9b708b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    {
+        src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        title: "Interior Salon",
+        price: "Atmosferă Premium"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        title: "Tuns Clasic",
+        price: "110 RON"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        title: "Coafat Ocazie",
+        price: "300 RON"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        title: "Vopsit Balayage",
+        price: "450 RON"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1503951914875-befea64f8f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        title: "Tratament Keratină",
+        price: "250 RON"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        title: "Styling Masculin",
+        price: "80 RON"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        title: "Vopsit Rădăcină",
+        price: "200 RON"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        title: "Produse Premium",
+        price: "Calitate Garantată"
+    }
 ];
 
 const Gallery = () => {
-    const sectionRef = useRef(null);
+    const [currentIndex, setCurrentIndex] = React.useState(0);
+    const timeoutRef = React.useRef(null);
 
-    useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-            // Horizontal scroll effect or staggered fade?
-            // Let's go with staggered fade for now as per request.
+    const resetTimeout = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+    };
 
-            gsap.from(".gallery-item", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 70%",
-                },
-                y: 50,
-                opacity: 0,
-                stagger: 0.2,
-                duration: 1
-            });
+    React.useEffect(() => {
+        resetTimeout();
+        timeoutRef.current = setTimeout(
+            () =>
+                setCurrentIndex((prevIndex) =>
+                    prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
+                ),
+            5000
+        );
 
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
+        return () => {
+            resetTimeout();
+        };
+    }, [currentIndex]);
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+    };
+
+    const goToSlide = (idx) => {
+        setCurrentIndex(idx);
+    };
 
     return (
-        <section className="section gallery" id="gallery" ref={sectionRef}>
+        <section className="section gallery" id="gallery">
             <div className="container">
-                <h2 className="section-title text-center mb-4">Galerie</h2>
-                <div className="gallery-grid">
-                    {galleryImages.map((src, idx) => (
-                        <div className="gallery-item" key={idx}>
-                            <img src={src} alt={`Gallery ${idx}`} />
+                <h2 className="section-title text-center">Galerie</h2>
+                <p className="section-desc text-center">Descoperă atmosfera salonului nostru.</p>
+
+                <div className="gallery-slideshow">
+                    <div className="gallery-slide-container">
+                        <img
+                            src={galleryImages[currentIndex].src}
+                            alt={galleryImages[currentIndex].title}
+                            className="gallery-slide-img"
+                        />
+                        <div className="gallery-overlay">
+                            <h3 className="gallery-title">{galleryImages[currentIndex].title}</h3>
+                            <p className="gallery-price">{galleryImages[currentIndex].price}</p>
                         </div>
-                    ))}
+                    </div>
+
+                    <button className="nav-btn prev-btn" onClick={prevSlide}>&#10094;</button>
+                    <button className="nav-btn next-btn" onClick={nextSlide}>&#10095;</button>
+
+                    <div className="dots-container">
+                        {galleryImages.map((_, idx) => (
+                            <span
+                                key={idx}
+                                className={`dot ${idx === currentIndex ? 'active' : ''}`}
+                                onClick={() => goToSlide(idx)}
+                            ></span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

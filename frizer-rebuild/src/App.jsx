@@ -49,6 +49,8 @@ function App() {
     <Router>
       <div className="app">
         <Navbar />
+        <Navbar />
+        {/* <PageTransition /> Temporarily removed to fix load issue */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/servicii/:slug" element={<ServicePage />} />

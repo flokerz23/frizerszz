@@ -8,6 +8,8 @@ const Hero = () => {
     const contentRef = useRef(null);
     const videoRef = useRef(null);
 
+    const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
+
     useEffect(() => {
         const tl = gsap.timeline();
 
@@ -32,17 +34,23 @@ const Hero = () => {
         // Floating elements logic could be added here
     }, []);
 
+    const handleVideoLoad = () => {
+        setIsVideoLoaded(true);
+    };
+
     return (
         <section className="hero" ref={heroRef} id="home">
             <div className="hero-video-container">
+                <div className={`video-placeholder ${isVideoLoaded ? 'hidden' : ''}`}></div>
                 <video
                     ref={videoRef}
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className="hero-video"
+                    className={`hero-video ${isVideoLoaded ? 'loaded' : ''}`}
                     poster="/hero-bg.png"
+                    onCanPlayThrough={handleVideoLoad}
                 >
                     <source src="/hero-video.mp4" type="video/mp4" />
                 </video>

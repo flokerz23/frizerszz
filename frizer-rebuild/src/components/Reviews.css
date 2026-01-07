@@ -1,7 +1,22 @@
 .reviews {
-    background: var(--bg-ivory);
-    /* Darker shade */
+    /* Background inherited from body */
     color: var(--text-color);
+    position: relative;
+    /* For divider */
+}
+
+/* Elegant Divider at top */
+.reviews::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.5), transparent);
+    z-index: 2;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
 }
 
 .reviews .section-title {

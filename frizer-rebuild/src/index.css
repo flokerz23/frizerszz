@@ -15,11 +15,15 @@
   /* New: Semantic dark surface */
   --bg-dark: #0a0a0a;
   /* Main dark bg */
-  --bg-ivory: #0f0f0f;
-  /* Kept for compatibility */
+  --bg-ivory: #0a0a0a;
+  /* Updated to match dark theme */
   --pure-white: #ffffff;
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Poppins', sans-serif;
+  --bg-pattern:
+    radial-gradient(circle at center, transparent 20%, #000000 100%),
+    repeating-linear-gradient(45deg, rgba(197, 160, 89, 0.08) 0px, rgba(197, 160, 89, 0.08) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(-45deg, rgba(197, 160, 89, 0.08) 0px, rgba(197, 160, 89, 0.08) 1px, transparent 1px, transparent 60px);
 }
 
 * {
@@ -51,6 +55,9 @@ html.lenis {
 body {
   font-family: var(--font-body);
   background-color: var(--bg-dark);
+  background-image: var(--bg-pattern);
+  background-attachment: fixed;
+  /* Parallax-like fix for background */
   color: var(--text-color);
   overflow-x: hidden;
 }

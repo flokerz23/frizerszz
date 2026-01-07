@@ -1,3 +1,8 @@
+.service-page {
+    /* Background inherited from body */
+    padding-bottom: 50px;
+}
+
 .service-hero {
     height: 60vh;
     background-size: cover;
@@ -7,81 +12,200 @@
     align-items: center;
     justify-content: center;
     color: var(--white);
-    margin-top: -80px;
-    /* Counteract navbar padding if transparent */
+    text-align: center;
 }
 
-.service-hero .overlay {
+/* Gradient moved to content section as requested */
+
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-}
-
-.service-title {
-    position: relative;
-    z-index: 2;
-    font-size: 4rem;
-    font-weight: 700;
+    z-index: 1;
 }
 
 .content-section {
-    padding: 80px 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-}
-
-.service-desc-box h2 {
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-}
-
-.service-desc-box p {
-    font-size: 1.1rem;
-    color: var(--text-light);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-}
-
-.price-tag {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--primary-color) !important;
-}
-
-.service-details-list h3 {
-    margin-bottom: 1.5rem;
-}
-
-.service-details-list ul {
-    list-style: none;
-}
-
-.service-details-list li {
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    color: var(--text-color);
     position: relative;
-    padding-left: 20px;
+    z-index: 10;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
-.service-details-list li::before {
-    content: '•';
-    color: var(--primary-color);
+.content-section::before {
+    content: '';
     position: absolute;
+    top: -100px;
     left: 0;
-    font-weight: bold;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #0a0a0a);
+    pointer-events: none;
+    z-index: 2;
 }
 
-@media (max-width: 768px) {
-    .content-section {
-        grid-template-columns: 1fr;
+.service-desc-box {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--text-light);
+}
+
+.pricing-grid-container {
+    padding: 20px 0;
+}
+
+/* --- Layout: Mobile Snap Carousel --- */
+.service-grid {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.service-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.service-item {
+    min-width: 85vw;
+    /* Large cards on mobile */
+    height: 400px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.service-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* Initial State: Text is always visible on mobile for clarity */
+.service-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.service-name {
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.service-price {
+    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* --- Desktop Layout: Horizontal Accordion --- */
+@media (min-width: 768px) {
+    .service-grid {
+        flex-wrap: wrap;
+        /* Allow wrapping -> Multi-row Accordion */
+        justify-content: center;
+        gap: 20px;
     }
 
-    .service-title {
-        font-size: 2.5rem;
+    .service-item {
+        min-width: 400px;
+        /* Much wider cards */
+        flex: 1;
+        height: 500px;
+        /* Reduced height slightly to balance aspect ratio */
+        margin-bottom: 0;
+        filter: grayscale(100%);
+        transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
     }
+
+    .service-item:hover {
+        flex: 2;
+        /* Expand on hover */
+        filter: grayscale(0%);
+    }
+
+    .service-item img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Overlay State: Title Visible, Price Hidden initially */
+    .service-overlay {
+        opacity: 1;
+        /* Always visible for Title */
+        transform: translateY(0);
+        transition: all 0.4s ease;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+        height: 100%;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 40px;
+    }
+
+    .service-name {
+        font-size: 1.8rem;
+        transform: translateY(10px);
+        transition: transform 0.4s ease;
+    }
+
+    .service-price {
+        font-size: 1.5rem;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        margin-top: 0;
+    }
+
+    /* Hover Interaction: Slide up and reveal Price */
+    .service-item:hover .service-overlay {
+        background: rgba(0, 0, 0, 0.4);
+        /* Darken for readability */
+        justify-content: center;
+        /* Center content on expand */
+        padding-bottom: 0;
+    }
+
+    .service-item:hover .service-name {
+        transform: translateY(-10px);
+    }
+
+    .service-item:hover .service-price {
+        max-height: 50px;
+        opacity: 1;
+        margin-top: 10px;
+    }
+}
+
+.service-details-list {
+    margin-top: 60px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
 }

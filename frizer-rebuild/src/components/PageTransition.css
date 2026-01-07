@@ -1,0 +1,54 @@
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.blade {
+    position: absolute;
+    width: 120%;
+    height: 55%;
+    /* Overlap slightly */
+    background: #000;
+    /* Deep black */
+    left: -10%;
+    will-change: transform;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.blade-top {
+    top: 0;
+    transform-origin: bottom left;
+    /* Gold edge on the cutting side */
+    border-bottom: 4px solid var(--primary-color);
+    transform: translateY(-105%) rotate(-5deg);
+    /* Start hidden above */
+}
+
+.blade-bottom {
+    bottom: 0;
+    transform-origin: top right;
+    /* Gold edge */
+    border-top: 4px solid var(--primary-color);
+    transform: translateY(105%) rotate(-5deg);
+    /* Start hidden below */
+}
+
+/* Optional: Add a "Scissors" icon or visual in the center during the cut? */
+.cut-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 3rem;
+    color: var(--primary-color);
+    z-index: 10000;
+    opacity: 0;
+}
