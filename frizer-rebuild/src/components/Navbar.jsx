@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import TransitionLink from './TransitionLink';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -27,17 +28,17 @@ const Navbar = () => {
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container nav-container">
-                <Link to="/" className="logo">A&M Concept</Link>
+                <TransitionLink to="/" className="logo">A&M Concept</TransitionLink>
 
                 <div className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-                    <Link to="/" onClick={() => setMenuOpen(false)}>Acasă</Link>
+                    <TransitionLink to="/" onClick={() => setMenuOpen(false)}>Acasă</TransitionLink>
                     <a href="/#about" onClick={() => handleNavClick('#about')}>Despre</a>
 
                     {/* Dropdown for Services could be added here, for now direct links */}
-                    <Link to="/servicii/frizerie" onClick={() => setMenuOpen(false)}>Frizerie</Link>
-                    <Link to="/servicii/coafor" onClick={() => setMenuOpen(false)}>Coafor</Link>
+                    <TransitionLink to="/servicii/frizerie" onClick={() => setMenuOpen(false)}>Frizerie</TransitionLink>
+                    <TransitionLink to="/servicii/coafor" onClick={() => setMenuOpen(false)}>Coafor</TransitionLink>
 
-                    <Link to="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
+                    <TransitionLink to="/blog" onClick={() => setMenuOpen(false)}>Blog</TransitionLink>
                     <a href="/#contact" onClick={() => handleNavClick('#contact')}>Contact</a>
                 </div>
 

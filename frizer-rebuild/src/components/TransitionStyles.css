@@ -1,21 +1,26 @@
-/* PageTransition.css */
+/* TransitionStyles.css */
 
-.page-transition-overlay {
+#transition-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 9999;
-    /* Allow clicks to pass through if something goes wrong, 
-       but `display:none` handled by React is safest */
-    pointer-events: all;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    z-index: 10000;
+    pointer-events: none;
+    /* Click-through by default */
+    display: none;
+    /* Hidden by default */
 }
 
-.blade {
+/* Only active during animation */
+#transition-overlay.active {
+    display: block;
+    pointer-events: all;
+    /* Block clicks during cut */
+}
+
+.t-blade {
     position: absolute;
     width: 120%;
     height: 55%;
@@ -25,36 +30,48 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.blade-top {
+.t-blade-top {
     top: 0;
     transform-origin: bottom left;
     border-bottom: 4px solid var(--primary-color);
     transform: translateY(-105%) rotate(-5deg);
-    animation: cutTop 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-.blade-bottom {
+.t-blade-bottom {
     bottom: 0;
     transform-origin: top right;
     border-top: 4px solid var(--primary-color);
     transform: translateY(105%) rotate(-5deg);
-    animation: cutBottom 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-.cut-icon {
+.t-cut-icon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     font-size: 3rem;
     color: var(--primary-color);
-    z-index: 10000;
-    animation: popIcon 1.5s ease-in-out forwards;
+    z-index: 10001;
+    opacity: 0;
+}
+
+/* Animations Triggered by .active class on parent */
+
+#transition-overlay.active .t-blade-top {
+    animation: tCutTop 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+#transition-overlay.active .t-blade-bottom {
+    animation: tCutBottom 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+#transition-overlay.active .t-cut-icon {
+    animation: tPopIcon 1.5s ease-in-out forwards;
 }
 
 /* Keyframes */
 
-@keyframes cutTop {
+@keyframes tCutTop {
     0% {
         transform: translateY(-105%) rotate(-5deg);
     }
@@ -72,7 +89,7 @@
     }
 }
 
-@keyframes cutBottom {
+@keyframes tCutBottom {
     0% {
         transform: translateY(105%) rotate(-5deg);
     }
@@ -90,7 +107,7 @@
     }
 }
 
-@keyframes popIcon {
+@keyframes tPopIcon {
     0% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0);

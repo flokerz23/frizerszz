@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import ServicePage from './pages/ServicePage';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import './components/TransitionStyles.css'; // Import transition styles
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,9 +49,15 @@ function App() {
   return (
     <Router>
       <div className="app">
+        {/* DOM-based Transition Overlay */}
+        <div id="transition-overlay">
+          <div className="t-blade t-blade-top"></div>
+          <div className="t-blade t-blade-bottom"></div>
+          <div className="t-cut-icon">✂</div>
+        </div>
+
         <Navbar />
-        <Navbar />
-        {/* <PageTransition /> Temporarily removed to fix load issue */}
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/servicii/:slug" element={<ServicePage />} />

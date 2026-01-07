@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@sanity/client';
-import { Link } from 'react-router-dom';
+import TransitionLink from '../components/TransitionLink';
 import './Blog.css';
 
 // Sanity Client Setup (reusing logic from legacy sanity-client.js)
@@ -89,7 +89,7 @@ const Blog = () => {
                                 <span className="post-date">{new Date(post.publishedAt).toLocaleDateString()}</span>
                                 <h3>{post.title}</h3>
                                 <p>{post.excerpt}</p>
-                                <Link to={`/blog/${post.slug.current}`} className="read-more">Citește mai mult &rarr;</Link>
+                                <TransitionLink to={`/blog/${post.slug.current}`} className="read-more">Citește mai mult &rarr;</TransitionLink>
                             </div>
                         </div>
                     ))}

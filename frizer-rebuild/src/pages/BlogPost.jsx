@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import TransitionLink from '../components/TransitionLink';
 import { gsap } from 'gsap';
 
 const BlogPost = () => {
@@ -18,7 +19,7 @@ const BlogPost = () => {
                     <p className="lead" style={{ fontSize: '1.25rem', fontWeight: '400', marginBottom: '2.5rem', textAlign: 'center', color: 'var(--secondary-color)' }}>
                         „Un univers creativ unde pasiunea întâlnește precizia.”
                     </p>
-                    <p>În inima Timișoarei, A&M Concept nu este doar un salon, ci un univers creativ unde pasiunea pentru frumusețe, precizie și autenticitate se întâlnesc într-un mod unic. La baza acestui concept stau doi tineri antreprenori cu viziune și determinare: Maria Mazilu și Alexandru Bosioc, parteneri atât în viața personală, cât și în cea profesională.</p>
+                    <p>În inima Timișoara, A&M Concept nu este doar un salon, ci un univers creativ unde pasiunea pentru frumusețe, precizie și autenticitate se întâlnesc într-un mod unic. La baza acestui concept stau doi tineri antreprenori cu viziune și determinare: Maria Mazilu și Alexandru Bosioc, parteneri atât în viața personală, cât și în cea profesională.</p>
                     <br />
                     <p>Maria Mazilu este imaginea eleganței și a rafinamentului în ceea ce privește culoarea părului, sănătatea firului și a scalpului, dar și în arta tunsorilor feminine echilibrate, personalizate și mereu în pas cu cele mai noi trenduri.</p>
                     <br />
@@ -74,7 +75,7 @@ const BlogPost = () => {
     return (
         <article className="blog-post-page" style={{ paddingTop: '150px', paddingBottom: '100px' }}>
             <div className="container" style={{ maxWidth: '800px' }}>
-                <Link to="/blog" style={{ color: '#C5A059', textDecoration: 'none', marginBottom: '20px', display: 'block' }}>&larr; Înapoi la Blog</Link>
+                <TransitionLink to="/blog" style={{ color: '#C5A059', textDecoration: 'none', marginBottom: '20px', display: 'block' }}>&larr; Înapoi la Blog</TransitionLink>
 
                 <h1 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>{post.title}</h1>
                 <div style={{ width: '100%', height: '300px', background: '#f5f5f5', marginBottom: '40px', borderRadius: '8px', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa' }}>
