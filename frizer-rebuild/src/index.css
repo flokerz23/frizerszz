@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #C5A059;
+  --primary-dark: #B08D45;
+  --secondary-color: #f0f0f0;
+  /* Light text for dark bg */
+  --text-color: #e0e0e0;
+  --text-light: #aaaaaa;
+  --white: #ffffff;
+  /* Restored to pure white */
+  --bg-card: #1a1a1a;
+  /* New: Semantic dark card bg */
+  --bg-surface: #0f0f0f;
+  /* New: Semantic dark surface */
+  --bg-dark: #0a0a0a;
+  /* Main dark bg */
+  --bg-ivory: #0f0f0f;
+  /* Kept for compatibility */
+  --pure-white: #ffffff;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.btn {
+  padding: 15px 40px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+/* Utilities */
+.text-center {
+  text-align: center;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}

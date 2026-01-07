@@ -1,0 +1,170 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    /* Align to left */
+    align-items: flex-end;
+    /* Align to bottom */
+    overflow: hidden;
+    color: var(--white);
+    text-align: left;
+    /* Align text left */
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    /* Taller for parallax */
+    z-index: -1;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Stronger Vignette effect */
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 1) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 40px 120px 40px;
+    /* Added bottom padding to lift it up slightly from the very edge, and left padding */
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    /* margin-left: auto; Removed centering */
+    /* margin-right: auto; Removed centering */
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    /* Align buttons left */
+}
+
+/* Updated Button Styles for Subtlety */
+.btn {
+    padding: 12px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    /* Slight rounded corners or keep sharp, user said subtle */
+}
+
+.btn-primary {
+    /* If there was a btn-primary definition elsewhere, we override or define here if strictly needed for this file context, but usually it might be global. 
+       However, based on previous file content, only .btn-outline was explicitly defined here. 
+       I will assume .btn-primary might be global or I should check if I need to style it uniquely here.
+       The user wants "buttons subtle". I'll treat them similarly or make primary less aggressive. */
+    background: rgba(255, 255, 255, 0.1);
+    /* Semi-transparent */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    backdrop-filter: blur(5px);
+}
+
+.btn-primary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--white);
+}
+
+.btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* More subtle border */
+    color: var(--white);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    border-color: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.scroller {
+    width: 2px;
+    height: 60px;
+    background: var(--white);
+    animation: scrollDown 2s infinite;
+}
+
+@keyframes scrollDown {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    50% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+
+    51% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        padding: 0 20px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
