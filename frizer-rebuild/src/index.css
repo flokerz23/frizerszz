@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary-color: #C5A059;
-  --primary-dark: #B08D45;
+  /* Monochrome Theme */
+  --primary-color: #ffffff;
+  /* Was Gold #C5A059 */
+  --primary-dark: #cccccc;
+  /* Was #B08D45 */
   --secondary-color: #f0f0f0;
   /* Light text for dark bg */
   --text-color: #e0e0e0;
@@ -22,8 +25,8 @@
   --font-body: 'Poppins', sans-serif;
   --bg-pattern:
     radial-gradient(circle at center, transparent 20%, #000000 100%),
-    repeating-linear-gradient(45deg, rgba(197, 160, 89, 0.08) 0px, rgba(197, 160, 89, 0.08) 1px, transparent 1px, transparent 60px),
-    repeating-linear-gradient(-45deg, rgba(197, 160, 89, 0.08) 0px, rgba(197, 160, 89, 0.08) 1px, transparent 1px, transparent 60px);
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 60px);
 }
 
 * {

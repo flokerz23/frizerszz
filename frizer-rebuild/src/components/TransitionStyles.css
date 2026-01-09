@@ -44,15 +44,20 @@
     transform: translateY(105%) rotate(-5deg);
 }
 
-.t-cut-icon {
+.t-icon-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    font-size: 3rem;
-    color: var(--primary-color);
     z-index: 10001;
     opacity: 0;
+}
+
+.t-cut-icon {
+    width: 200px;
+    height: auto;
+    display: block;
+    /* Rotation handled here */
 }
 
 /* Animations Triggered by .active class on parent */
@@ -65,8 +70,12 @@
     animation: tCutBottom 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
+#transition-overlay.active .t-icon-wrapper {
+    animation: tPopWrapper 1.5s ease-in-out forwards;
+}
+
 #transition-overlay.active .t-cut-icon {
-    animation: tPopIcon 1.5s ease-in-out forwards;
+    animation: tRotateIcon 1.5s linear forwards;
 }
 
 /* Keyframes */
@@ -76,10 +85,7 @@
         transform: translateY(-105%) rotate(-5deg);
     }
 
-    40% {
-        transform: translateY(0%) rotate(0deg);
-    }
-
+    40%,
     60% {
         transform: translateY(0%) rotate(0deg);
     }
@@ -94,10 +100,7 @@
         transform: translateY(105%) rotate(-5deg);
     }
 
-    40% {
-        transform: translateY(0%) rotate(0deg);
-    }
-
+    40%,
     60% {
         transform: translateY(0%) rotate(0deg);
     }
@@ -107,7 +110,7 @@
     }
 }
 
-@keyframes tPopIcon {
+@keyframes tPopWrapper {
     0% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0);
@@ -118,10 +121,7 @@
         transform: translate(-50%, -50%) scale(1.2);
     }
 
-    50% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-
+    50%,
     60% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
@@ -130,5 +130,15 @@
     100% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+@keyframes tRotateIcon {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }

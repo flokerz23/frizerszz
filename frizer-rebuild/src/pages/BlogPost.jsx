@@ -75,7 +75,7 @@ const BlogPost = () => {
     return (
         <article className="blog-post-page" style={{ paddingTop: '150px', paddingBottom: '100px' }}>
             <div className="container" style={{ maxWidth: '800px' }}>
-                <TransitionLink to="/blog" style={{ color: '#C5A059', textDecoration: 'none', marginBottom: '20px', display: 'block' }}>&larr; Înapoi la Blog</TransitionLink>
+                <TransitionLink to="/blog" style={{ color: 'var(--primary-color)', textDecoration: 'none', marginBottom: '20px', display: 'block' }}>&larr; Înapoi la Blog</TransitionLink>
 
                 <h1 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>{post.title}</h1>
                 <div style={{ width: '100%', height: '300px', background: '#f5f5f5', marginBottom: '40px', borderRadius: '8px', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa' }}>

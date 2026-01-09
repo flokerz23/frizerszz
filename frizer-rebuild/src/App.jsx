@@ -10,6 +10,7 @@ import ServicePage from './pages/ServicePage';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import './components/TransitionStyles.css'; // Import transition styles
+import bitmapSvg from './assets/bitmap.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,7 +54,9 @@ function App() {
         <div id="transition-overlay">
           <div className="t-blade t-blade-top"></div>
           <div className="t-blade t-blade-bottom"></div>
-          <div className="t-cut-icon">✂</div>
+          <div className="t-icon-wrapper">
+            <img src={bitmapSvg} className="t-cut-icon" alt="scissors" />
+          </div>
         </div>
 
         <Navbar />

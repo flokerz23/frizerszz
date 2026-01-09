@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './PageTransition.css';
+import drawingSvg from '../assets/drawing.svg';
 
 const PageTransition = () => {
     const location = useLocation();
@@ -33,7 +34,7 @@ const PageTransition = () => {
                 onAnimationEnd={handleAnimationEnd}
             ></div>
             <div className="blade blade-bottom"></div>
-            <div className="cut-icon">✂</div>
+            <img src={drawingSvg} className="cut-icon" alt="scissors" />
         </div>
     );
 };
